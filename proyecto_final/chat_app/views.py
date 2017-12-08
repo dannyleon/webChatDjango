@@ -24,7 +24,7 @@ def Login(request):
                 return HttpResponse("Account is not active at the moment.")
         else:
             return HttpResponseRedirect(settings.LOGIN_URL)
-    return render(request, "chat/login.html", {'next': next})
+    return render(request, "chat/login2.html", {'next': next})
 
 def Logout(request):
     logout(request)
