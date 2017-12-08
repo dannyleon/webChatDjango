@@ -7,7 +7,23 @@ from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from proyecto_final import settings
 from .models import Chat
 # Create your views here.
-
+from django.views.generic import CreateView
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
+# -*- coding: utf-8 -*-
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('home')
+    else:
+        form = UserCreationForm()
+    return render(request, 'chat/signup.html', {'form': form})
 
 def Login(request):
     next = request.GET.get('next', '/home/')
