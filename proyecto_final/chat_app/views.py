@@ -48,6 +48,7 @@ def Logout(request):
 
 def Home(request):
     c = Chat.objects.all()
+    print c
     return render(request, "chat/home.html", {'home': 'active', 'chat': c})
 
 def Post(request):
