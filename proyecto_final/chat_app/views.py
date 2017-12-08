@@ -10,6 +10,7 @@ from .models import Chat
 from django.views.generic import CreateView
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
+
 # -*- coding: utf-8 -*-
 def signup(request):
     if request.method == 'POST':
@@ -20,13 +21,13 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('home')
+            return redirect('home2')
     else:
         form = UserCreationForm()
     return render(request, 'chat/signup.html', {'form': form})
 
 def Login(request):
-    next = request.GET.get('next', '/home/')
+    next = request.GET.get('next', '/home2/')
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
@@ -44,11 +45,11 @@ def Login(request):
 
 def Logout(request):
     logout(request)
-    return HttpResponseRedirect('/login/')
+    return HttpResponseRedirect('/login2/')
 
 def Home(request):
     c = Chat.objects.all()
-    return render(request, "chat/home.html", {'home': 'active', 'chat': c})
+    return render(request, "chat/home2.html", {'home2': 'active', 'chat': c})
 
 def Post(request):
     if request.method == "POST":

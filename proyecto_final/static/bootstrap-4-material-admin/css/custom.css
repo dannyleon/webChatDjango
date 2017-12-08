@@ -1,1 +1,21 @@
 /* your styles go here */
+#AliniadoIzquierda
+{
+  text-align: left;
+  padding-left: 50px;
+}
+#AliniadoDerecha
+{
+  text-align: right;
+}
+
+.topright {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    font-size: 18px;
+  }
+
+
+.text-left{text-align:left;}
+.text-right{text-align:right;}

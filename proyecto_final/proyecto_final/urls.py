@@ -21,8 +21,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     url(r'^login/$', views.Login, name='login'),
+    url(r'^home2/login/$', views.Logout, name='logout'),
     url(r'^logout/$', views.Logout, name='logout'),
-    url(r'^home/$', views.Home, name='home'),
+    url(r'^home2/$', views.Home, name='home'),
     url(r'^signup/', views.signup, name='signup'),
     url(r'^post/$', views.Post, name='post'),
     url(r'^messages/$', views.Messages, name='messages'),
