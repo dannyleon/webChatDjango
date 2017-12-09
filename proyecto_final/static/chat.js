@@ -9,9 +9,12 @@ $('#chat-form').on('submit', function(event){
         success : function(json){
             console.log(json)
             $('#chat-msg').val('');
-            $('#msg-list').append('<span>'+json.user+': </span><li class="text-right list-group-item">' + json.msg + '</li>');
+            $('#msg-list').append('<span>'+json.user+': </span> <li class="text-right list-group-item">' + json.msg + '</li>');
+            //$('#count').append('<h3>'+json.count+': </h3> ');
+            document.getElementById("count").innerHTML = "<h3>Has Enviado " +json.count+ " Mensajes</h3>";
             var chatlist = document.getElementById('msg-list-div');
-            //chatlist.scrollTop = chatlist.scrollHeight;
+
+            chatlist.scrollTop = chatlist.scrollHeight;
         }
     });
 });
@@ -28,13 +31,14 @@ function getMessages(){
 }
 
 var scrolling = false;
-/*$(function(){
-    $('#msg-list-div').on('scroll', function(){
+
+$(function(){
+   $('#msg-list-div').on('scroll', function(){
         scrolling = true;
     });
     refreshTimer = setInterval(getMessages, 500);
 });
-*/
+
 $(document).ready(function() {
      $('#send').attr('disabled','disabled');
      $('#chat-msg').keyup(function() {
